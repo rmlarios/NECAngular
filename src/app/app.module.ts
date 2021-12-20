@@ -44,7 +44,7 @@ import { MatPaginatorModule } from '@angular/material/';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: 'criptocurrency', component: BitcoinComponent }
+      { path: '', component: BitcoinComponent, pathMatch:'full'}
     ])
   ],
   providers: [RestService,

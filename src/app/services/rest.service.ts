@@ -24,9 +24,9 @@ export class RestService {
     /*throwError('Something bad happened; please try again later.');*/
   }
 
-  getCurrencys(current:string="",value:number=0): Observable<any> {
+  getCurrencys(key:string): Observable<any> {
 
-    return this.http.get<apiResponse>(apiUrl + 'Currencies/GetList/List')
+    return this.http.get<apiResponse>(apiUrl + 'Currencies/GetList/List?key='+key)
       .pipe(
      // map(this.extractData),
       catchError(this.handleError)

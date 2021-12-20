@@ -1,4 +1,7 @@
 <p>{{'Times Updated: ' + count}}</p>
+<div class="row">
+  <input type="text" placeholder="Enter your API Key to start" id="apikey" (input)="loadCurrencies($event.target)">
+</div>
 <table border="1">
   <tr>
     <th>Cripto Currency</th>

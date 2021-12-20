@@ -27,17 +27,23 @@ export class BitcoinComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-   this.obs = interval(5000).subscribe(x => {
+  /* this.obs = interval(5000).subscribe(x => {
       this.count += 1;
       this.loadCurrencies();
-    })
+    })*/
     //this.loadCurrencies();
   }
 
-  loadCurrencies() {
-    this.rest.getCurrencys().subscribe((resp: any) => {
-      console.log(resp);
-     this.list = resp.data;
+  loadCurrencies(key:any) {
+   this.obs= this.rest.getCurrencys(key.value).subscribe((resp: apiResponse) => {
+     console.log(resp);
+     if (resp.status.error_code == 0) {
+      this.list = resp.data;
+     }
+     else {
+       this.matSnackBar.open(resp.status.error_message, 'Close', { duration: 3000 });
+     }
+
 
     });
   }
